@@ -8,7 +8,7 @@ import (
 	"syscall"
 )
 
-const port string = ":8080"
+const port string= ":8080"
 
 type tcpServer struct {
 	addr     string
