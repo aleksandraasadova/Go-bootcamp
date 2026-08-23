@@ -28,17 +28,17 @@ install: ## Установить зависимости
 
 test: install ## Запустить тесты
 	@echo "🧪 Запуск тестов..."
-	@if [ ! -f "compile_server.sh" ] || [ ! -f "execute_server.sh" ] || [ ! -f "compile_client.sh" ] || [ ! -f "execute_client.sh" ]; then \
-		echo "❌ Отсутствуют необходимые скрипты compile_*.sh и execute_*.sh"; \
+	@if [ ! -f "compile.sh" ] || [ ! -f "execute.sh" ]; then \
+		echo "❌ Отсутствуют необходимые скрипты compile.sh и execute.sh"; \
 		echo "   Создайте скрипты согласно README.md"; \
 		exit 1; \
 	fi
-	$(PYTHON) $(TEST_DIR)/test.py
+	$(PYTHON) $(TEST_DIR)/tests.py
 	@echo "✅ Все тесты прошли успешно!"
 
 clean: ## Очистить временные файлы
 	@echo "🧹 Очистка временных файлов..."
 	rm -rf __pycache__ .pytest_cache *.pyc
-	rm -f server client *.o *.out
+	rm -f hedgedcurl *.o *.out *.class
 	rm -rf $(VENV_DIR)
 	@echo "✅ Очистка завершена"
