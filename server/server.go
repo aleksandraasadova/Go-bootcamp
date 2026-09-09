@@ -69,5 +69,8 @@ func main() {
 	sigint := make(chan os.Signal, 1)
 	signal.Notify(sigint, syscall.SIGINT, syscall.SIGTERM)
 	<-sigint
-	server.Stop()
+
+	if err := server.Stop(); err != nil {
+		fmt.Printf("Failed to stop server: %v\n", err)
+	}
 }
