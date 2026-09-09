@@ -6,7 +6,7 @@ if [ -f "client.c" ]; then
 elif [ -f "client.cpp" ]; then
     echo "Компиляция C++ клиента..."
     g++ -o client client.cpp
-elif [ -f "client.go" ]; then
+elif [ -f "client/client.go" ]; then
     echo "Go не требует предварительной компиляции"
     exit 0
 elif [ -f "client.py" ]; then

@@ -16,17 +16,15 @@ func main() {
 		os.Exit(1)
 	}
 	defer conn.Close()
-	buff := make([]byte, 1024)
-	n, err := conn.Read(buff)
-	response := string(buff[:n])
 
+	readBytes, err := io.ReadAll(conn)
 	if err != nil && err != io.EOF {
 		fmt.Printf("Failed to read response: %v\n", err)
 		os.Exit(1)
 	}
-	if response == "OK\n" {
+	if string(readBytes) == "OK\n" {
 		fmt.Println("Success: received correct response 'OK\\n'")
 	} else {
-		fmt.Printf("Error: expected 'OK\\n', but got '%s'\n", response)
+		fmt.Printf("Error: expected 'OK\\n', but got '%s'\n", string(readBytes))
 	}
 }

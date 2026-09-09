@@ -3,9 +3,9 @@
 if [ -f "client" ]; then
     echo "Запуск скомпилированного клиента..."
     ./client
-elif [ -f "client.go" ]; then
+elif [ -f "client/client.go" ]; then
     echo "Запуск Go клиента..."
-    go run client.go
+    go run client/client.go
 elif [ -f "client.py" ]; then
     echo "Запуск Python клиента..."
     python3 client.py

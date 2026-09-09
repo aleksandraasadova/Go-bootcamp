@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"net"
 	"os"
@@ -8,7 +9,7 @@ import (
 	"syscall"
 )
 
-const port string= ":8080"
+const port string = ":8080"
 
 type tcpServer struct {
 	addr     string
@@ -31,7 +32,7 @@ func (s *tcpServer) Start() error {
 	for {
 		conn, err := s.listener.Accept()
 		if err != nil {
-			if err == net.ErrClosed {
+			if errors.Is(err, net.ErrClosed) {
 				return nil
 			}
 			fmt.Printf("failed to connect the client: %v\n", err)

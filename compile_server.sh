@@ -6,7 +6,7 @@ if [ -f "server.c" ]; then
 elif [ -f "server.cpp" ]; then
     echo "Компиляция C++ сервера..."
     g++ -o server server.cpp
-elif [ -f "server.go" ]; then
+elif [ -f "server/server.go" ]; then
     echo "Go не требует предварительной компиляции"
     exit 0
 elif [ -f "server.py" ]; then
